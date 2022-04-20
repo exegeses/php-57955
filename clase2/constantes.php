@@ -5,4 +5,3 @@
     echo 'El curso es: ', CURSO;
     // otro modo
     define('NOMBRE', 'Marcos');
-
