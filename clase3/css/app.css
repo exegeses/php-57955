@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+    color: #444;
+    font-size: 1.2em;
+}
 main{
     width: 1024px;
     margin: auto;
@@ -7,6 +19,9 @@ main{
     article{
         width: 290px;
         padding: 10px;
+        margin: 12px;
+        box-shadow: 0px 0px 5px #999;
+        border-radius: 12px;
     }
     article img{
         width: 100%;

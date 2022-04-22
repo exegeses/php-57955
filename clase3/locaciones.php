@@ -60,12 +60,17 @@
 </head>
 <body>
     <main>
-
+<?php
+    $cantidad = count($locaciones);
+    for ( $i=0; $i < $cantidad; $i++ ) {
+?>
         <article>
-            <img src="imagenes/petra.jpg">
-            <h2>Petra</h2>
+            <img src="imagenes/<?= $locaciones[$i] ?>.jpg">
+            <h2><?= $locaciones2[$i] ?></h2>
         </article>
-
+<?php
+    }
+?>
     </main>
 
 </body>
