@@ -1,0 +1,13 @@
+main{
+    width: 1024px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+    article{
+        width: 290px;
+        padding: 10px;
+    }
+    article img{
+        width: 100%;
+    }
