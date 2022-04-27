@@ -38,18 +38,21 @@ $locaciones2 =
 </head>
 <body>
     <main>
-
 <?php
-foreach ($locaciones as $clave => $valor)
-{
-    ?>
-    <article>
-        <img src="imagenes/<?= $valor ?>.jpg" >
-        <h2><?= $locaciones2[$clave] ?></h2>
-    </article>
-<?php
-    }
+        $i = 0;
+        foreach ($locaciones as $locacion){
 ?>
+            <article>
+                <img src="imagenes/<?= $locacion?>.jpg" alt="">
+        <?php
+                echo $locaciones2[$i];
+                $i++;
+        ?>
+            </article>
+<?php
+        }
+?>
+
     </main>
 </body>
 </html>
