@@ -7,8 +7,14 @@
         $link = conectar();
         $sql = "SELECT idMarca, mkNombre
                     FROM marcas";
-        $resultado = mysqli_query( $link, $sql );
+        try {
+            $resultado = mysqli_query( $link, $sql );
+        }catch ( Exception $e ){
+            echo $e->getMessage();
+            return false;
+        }
         return $resultado;
+
     }
 
 /*

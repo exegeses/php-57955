@@ -17,8 +17,11 @@ $fechats2 = strtotime($fecha); //fecha en yyyy-mm-dd
 
 echo $dias[date("w", $fechats)];
 echo " ",$Dia, " de " ;
+
+
 echo $mesNombre[date("w", $fechats2)];
 echo ' de ',$Anio;
+
 ?>
 <hr>
 <?php

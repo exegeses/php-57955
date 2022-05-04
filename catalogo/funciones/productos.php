@@ -19,10 +19,12 @@
                JOIN marcas ON marcas.idMarca = productos.idMarca
                JOIN categorias ON categorias.idCategoria = productos.idCategoria';
 
-        $resultado = mysqli_query($link,$sql);
+        try {
+            $resultado = mysqli_query( $link, $sql );
+        }catch ( Exception $e ){
+            echo $e->getMessage();
+            return false;
+        }
         return $resultado ;
-
-        //Return False en caso de error
-        //
 
     }

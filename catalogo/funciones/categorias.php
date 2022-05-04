@@ -7,7 +7,12 @@
         $link = conectar();
         $sql = "SELECT idCategoria, catNombre
                         FROM categorias";
-        $resultado = mysqli_query( $link, $sql );
+        try {
+            $resultado = mysqli_query( $link, $sql );
+        }catch ( Exception $e ){
+            echo $e->getMessage();
+            return false;
+        }
         return $resultado;
     }
 
