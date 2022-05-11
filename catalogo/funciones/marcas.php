@@ -95,6 +95,22 @@
         }
     }
 
+    function eliminarMarca()
+    {
+        $idMarca = $_POST['idMarca'];
+        $link = conectar();
+        $sql="DELETE FROM marcas
+                WHERE idMarca =".  $idMarca;
+        try {
+            $resultado = mysqli_query($link,$sql);
+            return $resultado ;
+        }
+        catch(Exception $e)
+        {
+            echo $e->getMessage();
+            return false;
+        }
+    }
 /*
  * listarMarcas()
     verMarcaPorID()
