@@ -37,6 +37,13 @@
                 </a>
             </form>
         </div>
+        <script>
+            Swal.fire(
+                '¡Advertencia!',
+                'Su pulsa el botón "Confirmar baja", se eliminará la marca seleccionada.',
+                'warning'
+            );
+        </script>
 <?php
     }
 ?>
