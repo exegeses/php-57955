@@ -46,5 +46,46 @@
         }
 
         return $prdImagen;
+    }
 
+    function agregarProducto()
+    {
+        //capturamos datos enviador por el form
+        $prdNombre = $_POST['prdNombre'];
+        $prdPrecio = $_POST['prdPrecio'];
+        $idMarca = $_POST['idMarca'];
+        $idCategoria = $_POST['idCategoria'];
+        $prdDescripcion = $_POST['prdDescripcion'];
+        // subirImagen
+        $prdImagen = subirImagen();
+
+        $link = conectar();
+        //mensaje sql
+        $sql="INSERT INTO productos (
+                                prdNombre
+                                ,prdPrecio
+                                ,idMarca
+                                ,idCategoria
+                                ,prdDescripcion
+                                ,prdImagen
+                                ,prdActivo
+                                )
+                    VALUES (
+                                '".$prdNombre."', 
+                                $prdPrecio,
+                                $idMarca,
+                                $idCategoria, 
+                                '".$prdDescripcion."',
+                                '".$prdImagen."',
+                                 1 
+                           )";
+        try {
+            $resultado = mysqli_query($link,$sql);
+            return $resultado;
+        }
+        catch(Exception $e)
+        {
+            echo $e->getMessage();
+            return false;
+        }
     }
