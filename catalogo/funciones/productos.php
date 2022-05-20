@@ -28,6 +28,49 @@
         return $resultado ;
     }
 
+    function buscarProductos()
+    {
+        $buscar = '';
+        if ( isset($_GET['buscar']) ){
+            $buscar = $_GET['buscar'];
+        }
+        $sqlwhere = '';
+        if ( isset($_GET['idMarca']) ){
+            $idMarca = $_GET['idMarca'];
+            $sqlwhere =  " AND (".$idMarca." = 0 OR productos.idMarca = ". $idMarca .") ";
+        }
+        if ( isset($_GET['idCategoria']) ){
+            $idCategoria = $_GET['idCategoria'];
+            $sqlwhere .=  " AND (".$idCategoria." = 0 OR productos.idCategoria = ". $idCategoria .") ";
+        }
+        $link = conectar();
+        $sql = "SELECT idProducto
+                    ,prdNombre
+                    ,prdPrecio
+                    ,productos.idMarca
+                    ,mkNombre
+                    ,productos.idCategoria
+                    ,catNombre
+                    ,prdDescripcion
+                    ,prdImagen
+                    ,prdActivo
+               FROM productos
+               JOIN marcas ON marcas.idMarca = productos.idMarca
+               JOIN categorias ON categorias.idCategoria = productos.idCategoria
+               WHERE prdNombre LIKE '%".$buscar."%'";
+
+        $sql .= $sqlwhere;
+
+        try {
+            $resultado = mysqli_query( $link, $sql );
+        }catch ( Exception $e ){
+            echo $e->getMessage();
+            return false;
+        }
+        return $resultado ;
+    }
+
+
     function verProductoPorID()
     {
         $idProducto = $_GET['idProducto'];

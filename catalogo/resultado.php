@@ -7,7 +7,9 @@
     require 'funciones/productos.php';
     $marcas = listarMarcas();
     $categorias = listarCategorias();
-    $productos = listarProductos();
+    $productos = buscarProductos();
+    //$cantidad = $productos->num_rows;
+    $cantidad = mysqli_num_rows($productos);
 	include 'layout/header.php';
 	include 'layout/nav.php';
 ?>
@@ -45,6 +47,16 @@
             </form>
         </div>
 
+<?php
+    if ( $cantidad == 0){
+?>        
+        <div class="col-10 mx-auto p-5 shadow">
+            No se han encontrado resultados
+        </div>
+<?php
+    }
+    else{
+?>
         <table class="table table-borderless table-striped table-hover">
             <thead>
                 <tr>
@@ -89,7 +101,9 @@
 ?>
             </tbody>
         </table>
-
+<?php
+    }
+?>
         <a href="admin.php" class="btn btn-outline-secondary my-2">
             Volver a dashboard
         </a>
