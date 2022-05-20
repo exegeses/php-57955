@@ -156,3 +156,21 @@
             return false;
         }
     }
+
+    function eliminarProducto()
+    {
+        $idProducto = $_POST['idProducto'];
+        $link = conectar();
+        $sql="DELETE FROM productos
+                WHERE idProducto = ".$idProducto;
+        try {
+            $resultado = mysqli_query($link, $sql);
+            return $resultado;
+        }
+        catch(Exception $e)
+        {
+            echo $e->getMessage();
+            return false;
+        }
+
+    }
