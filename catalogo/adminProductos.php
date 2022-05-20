@@ -18,12 +18,12 @@
         <table class="table table-borderless table-striped table-hover">
             <thead>
                 <tr>
+                    <th>Imagen</th>
                     <th>Producto</th>
                     <th>Precio</th>
                     <th>Marca</th>
                     <th>Categoria</th>
                     <th>Presentación</th>
-                    <th>Imagen</th>
                     <th colspan="2">
                         <a href="formAgregarProducto.php" class="btn btn-outline-secondary">
                             Agregar
@@ -37,12 +37,12 @@
             {
 ?>            
                 <tr>
+                    <td><img src="productos/<?= $producto['prdImagen'] ?>" class="img-thumbnail"></td>
                     <td><?= $producto['prdNombre'] ?></td>
                     <td><?= $producto['prdPrecio'] ?></td>
                     <td><?= $producto['mkNombre'] ?></td>
                     <td><?= $producto['catNombre'] ?></td>
                     <td><?= $producto['prdDescripcion'] ?></td>
-                    <td><img src="productos/<?= $producto['prdImagen'] ?>" class="img-thumbnail"></td>
                     <td>
                         <a href="formModificarProducto.php?idProducto=<?= $producto['idProducto'] ?>" class="btn btn-outline-secondary">
                             Modificar
