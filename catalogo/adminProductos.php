@@ -18,9 +18,12 @@
         <a href="admin.php" class="btn btn-outline-secondary my-2">
             Volver a dashboard
         </a>
-        <div class="container p-3 m-3">
-            <form action="resultado.php" method="get">
+        <div class="alert container p-3 m-3 mx-auto shadow">
+            <form action="resultado.php" method="get" class="row">
+            <div class="col-md-6">
                 <input type="text" name="buscar" class="form-control">
+            </div>
+            <div class="col-md-2">
                 <select name="idMarca" class="form-control">
                     <option value="0">Seleccione una marca</option>
 <?php
@@ -31,6 +34,8 @@
             }
 ?>                
                 </select>
+            </div>
+            <div class="col-md-2">
                 <select name="idCategoria" class="form-control">
                     <option value="0">Seleccione una categoría</option>
 <?php
@@ -41,7 +46,10 @@
             }
 ?>
                 </select>
+            </div>
+            <div class="col">
                 <button class="btn btn-outline-secondary">buscar</button>
+            </div>
             </form>
         </div>
 

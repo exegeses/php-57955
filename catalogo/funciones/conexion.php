@@ -3,7 +3,7 @@
     const SERVER  = 'localhost';
     const USUARIO = 'root';
     const CLAVE   = 'root';
-    const BASE    = 'catalogo2022';
+    const BASE    = 'catalogo57955';
 
     function conectar() : mysqli
     {

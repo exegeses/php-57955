@@ -20,30 +20,39 @@
         <a href="admin.php" class="btn btn-outline-secondary my-2">
             Volver a dashboard
         </a>
-        <div class="container p-3 m-3">
-            <form action="resultado.php" method="get">
-                <input type="text" name="buscar" class="form-control">
-                <select name="idMarca" class="form-control">
-                    <option value="0">Seleccione una marca</option>
-<?php
-            while ( $marca = mysqli_fetch_assoc( $marcas ) ){        
-?>                      
-                    <option value="<?= $marca['idMarca'] ?>"><?= $marca['mkNombre'] ?></option>
-<?php
-            }
-?>                
-                </select>
-                <select name="idCategoria" class="form-control">
-                    <option value="0">Seleccione una categoría</option>
-<?php
-            while ( $categoria = mysqli_fetch_assoc( $categorias ) ){
-?>
-                    <option value="<?= $categoria['idCategoria'] ?>"><?= $categoria['catNombre'] ?></option>
-<?php
-            }
-?>
-                </select>
-                <button class="btn btn-outline-secondary">buscar</button>
+
+        <div class="alert container p-3 m-3 mx-auto shadow">
+            <form action="resultado.php" method="get" class="row">
+                <div class="col-md-6">
+                    <input type="text" name="buscar" class="form-control">
+                </div>
+                <div class="col-md-2">
+                    <select name="idMarca" class="form-control">
+                        <option value="0">Seleccione una marca</option>
+                        <?php
+                        while ( $marca = mysqli_fetch_assoc( $marcas ) ){
+                            ?>
+                            <option value="<?= $marca['idMarca'] ?>"><?= $marca['mkNombre'] ?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <select name="idCategoria" class="form-control">
+                        <option value="0">Seleccione una categoría</option>
+                        <?php
+                        while ( $categoria = mysqli_fetch_assoc( $categorias ) ){
+                            ?>
+                            <option value="<?= $categoria['idCategoria'] ?>"><?= $categoria['catNombre'] ?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="col">
+                    <button class="btn btn-outline-secondary">buscar</button>
+                </div>
             </form>
         </div>
 
