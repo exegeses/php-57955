@@ -1,5 +1,30 @@
 <?php
 
+
+    function listarUsuarios()
+    {
+        $link = conectar() ;
+        $sql='Select idUsuario
+                ,nombre
+                ,apellido
+                ,email
+                ,usuarios.idRol
+                ,roles.rol
+           FROM usuarios
+           JOIN roles ON roles.idRol = usuarios.idRol';
+        try {
+            $resultado = mysqli_query($link,$sql);
+            return $resultado ;
+        }
+        catch(Exception $e)
+        {
+            echo $e->getMessage();
+            return false;
+        }
+        return $resultado ;
+
+    }
+
     function agregarUsuario()
     {
         $nombre = $_POST['nombre'];
