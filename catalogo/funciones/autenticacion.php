@@ -23,10 +23,14 @@
             if( password_verify( $clave, $usuario['clave']) ){
                 //acá ya sabemos que se logueó bien
                 ###### RUTINA DE AUTENTICACIÓN
-                // sesiones
-
+                $_SESSION['login'] = 1;
+                #registramos otros datos del usuario
+                $_SESSION['idUsuario'] = $usuario['idUsuario'];
+                $_SESSION['nombre'] = $usuario['nombre'];
+                $_SESSION['apellido'] = $usuario['apellido'];
+                $_SESSION['idRol'] = $usuario['idRol'];
                 //redirección a admin
-                echo 'este es el admin';
+                header('location: admin.php');
             }else{
                 //redirección a formLogin
                 header('location: formLogin.php?error=1');
@@ -40,9 +44,20 @@
     }
 
     function logout()
-    {}
+    {
+        //eliminamos variables de sesión
+        session_unset();
+        //eliminamos la sesión
+        session_destroy();
+        //redirección con demora a index
+        header('refresh:3;url=index.php');
+    }
 
     function autenticar()
-    {}
+    {
+        if ( !isset($_SESSION['login']) ){
+            header('location: formLogin.php?error=2');
+        }
+    }
 
     //function esAdmin()

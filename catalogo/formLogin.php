@@ -1,5 +1,5 @@
 <?php
-    //require 'config/config.php';
+    require 'config/config.php';
     include 'layout/header.php';
     include 'layout/nav.php';
 ?>
@@ -25,11 +25,15 @@
         </div>
 
 <?php
-        if ( isset($_GET['error']) ) {
+        if(  isset( $_GET["error"] ) ){
+            $msjError='Debe acceder con su usuario y contraseñar';
+            if ( $_GET["error"] == 1 ){
+                $msjError='Usuario y/o contraseña incorrectos.';
+            }
 ?>
-        <div class="alert bg-light text-danger p-4 col-8 mx-auto shadow">
-            Usuario y/o contraseña incorrectos.
-        </div>
+            <div class="alert bg-light text-danger p-4 col-8 mx-auto shadow">
+                <?= $msjError ?>
+            </div>
 <?php
         }
 ?>

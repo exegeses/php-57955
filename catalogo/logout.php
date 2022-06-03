@@ -1,16 +1,19 @@
 <?php
 
     require 'config/config.php';
+    require 'funciones/autenticacion.php';
+        logout();
     include 'layout/header.php';
     include 'layout/nav.php';
 ?>
 
     <main class="container py-4">
-        <h1>Contenido de la sección</h1>
+        <h1>Salir de sistema</h1>
 
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque dignissimos ducimus eos error ipsa ipsum iste quia rem voluptas voluptatibus!
+        <p class="alert p-4 col-8 mx-auto shadow">
+            Gracias por su visita
         </p>
+
     </main>
 
 <?php
