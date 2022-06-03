@@ -1,5 +1,8 @@
 <?php
-//require 'config/config.php';
+    require 'config/config.php';
+    require 'funciones/autenticacion.php';
+        autenticar();
+        noAdmin();
     require 'funciones/conexion.php';
     require 'funciones/productos.php';
     $producto = verProductoPorID();

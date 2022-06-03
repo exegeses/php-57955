@@ -60,4 +60,14 @@
         }
     }
 
-    //function esAdmin()
+    function noAdmin()
+    {
+        if( $_SESSION['idRol'] != 1 ){
+            //$_SESSION['origen'] = $_SERVER['HTTP_REFERER'];
+            //$_SESSION['origen'] = $_SERVER['SCRIPT_FILENAME'];
+            $origen  = str_replace('/catalogo/', '', $_SERVER['REQUEST_URI']);
+            //$origen  = str_replace( '?%', '', $origen );
+            $_SESSION['origen'] = $origen;
+            header('location: noAdmin.php');
+        }
+    }
