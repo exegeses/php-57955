@@ -28,6 +28,7 @@
                 $_SESSION['idUsuario'] = $usuario['idUsuario'];
                 $_SESSION['nombre'] = $usuario['nombre'];
                 $_SESSION['apellido'] = $usuario['apellido'];
+                $_SESSION['email'] = $email;
                 $_SESSION['idRol'] = $usuario['idRol'];
                 //redirección a admin
                 header('location: admin.php');
