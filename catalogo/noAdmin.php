@@ -21,7 +21,10 @@
 
     $mensaje = match( $_SESSION['origen'] )
     {
-        '/catalogo/adminUsuarios.php' => 'No puede modificar o eliminar usuarios',
+        'adminUsuarios.php' => 'No puede modificar o eliminar usuarios',
+        'formEliminarProducto.php' => 'Debe ser administrador para eliminar un producto',
+        'formEliminarMarca.php' => 'Debe ser administrador para eliminar una marca',
+        'formEliminarCategoria.php' => 'Debe ser administrador para eliminar una categoría',
         default => 'Debe ser administrador para realizar esta tarea.'
     };
 

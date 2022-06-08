@@ -66,7 +66,8 @@
             //$_SESSION['origen'] = $_SERVER['HTTP_REFERER'];
             //$_SESSION['origen'] = $_SERVER['SCRIPT_FILENAME'];
             $origen  = str_replace('/catalogo/', '', $_SERVER['REQUEST_URI']);
-            //$origen  = str_replace( '?%', '', $origen );
+            $pos = strpos($origen, '?');
+            $origen = substr($origen,0,$pos);
             $_SESSION['origen'] = $origen;
             header('location: noAdmin.php');
         }
