@@ -148,7 +148,26 @@
             <script>
                 let btnCambiarClave = document.querySelector('#btnCambiarClave');
                 let formCambiarClave = document.querySelector('#formCambiarClave');
-                formCambiarClave.style.display = 'none';
+<?php
+    $display = 'none';
+    if( isset($_GET['error']) ){
+        $display = 'block';
+        if( $_GET['error'] == 1 ){ //contraseña actual
+            $campo = 'clave';
+            echo 'msjClave.innerText="Contraseña incorrecta";';
+            echo 'msjClave.style.display = "block";';
+        }
+        else{
+            $campo = 'newClave';
+            echo 'msjNewClave.innerText="Las credenciales no coinciden";';
+            echo 'msjNewClave.style.display = "block";';
+
+        }
+        echo $campo.'.focus();';
+    }
+?>
+                formCambiarClave.style.display = '<?= $display ?>';
+
                 btnCambiarClave.addEventListener('click', mostrarOcultarForm );
                 function mostrarOcultarForm()
                 {
