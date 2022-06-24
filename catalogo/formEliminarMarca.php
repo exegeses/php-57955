@@ -3,7 +3,7 @@
     require 'funciones/autenticacion.php';
         autenticar();
         noAdmin();
-    require 'funciones/conexion.php';
+    require 'funciones/conexion-local.php';
     require 'funciones/marcas.php';
     $existe = verificarProdPorMarca();
     include 'layout/header.php';

@@ -25,6 +25,33 @@
 
     }
 
+function verUsuarioPorId()
+{
+    $idUsuario = $_GET['idUsuario'];
+    $link = conectar();
+    $sql='SELECT idUsuario
+                ,nombre
+                ,apellido
+                ,email
+                ,usuarios.idRol
+                ,rol
+            FROM usuarios
+            JOIN roles ON roles.idRol = usuarios.idRol
+            WHERE  idUsuario = '.$idUsuario;
+    try {
+        $resultado = mysqli_query($link,$sql);
+        $usuario = mysqli_fetch_assoc($resultado);
+    }
+    catch(Exception $e)
+    {
+        echo $e->getMessage();
+        return false;
+    }
+    return $usuario;
+
+}
+
+
     function agregarUsuario()
     {
         $nombre = $_POST['nombre'];
@@ -71,9 +98,11 @@ function modificarUsuario()
            $sql .= " WHERE idUsuario =" .$idUsuario;
     try {
         $resultado = mysqli_query($link,$sql);
-        $_SESSION['nombre'] = $nombre;
-        $_SESSION['apellido'] = $apellido;
-        $_SESSION['email'] = $email;
+        if( $_SESSION['idRol'] != 1 ){
+            $_SESSION['nombre'] = $nombre;
+            $_SESSION['apellido'] = $apellido;
+            $_SESSION['email'] = $email;
+        }
         return $resultado;
     }
     catch(Exception $e)

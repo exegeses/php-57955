@@ -3,7 +3,7 @@
     require 'config/config.php';
     require 'funciones/autenticacion.php';
         autenticar();
-    require 'funciones/conexion.php';
+    require 'funciones/conexion-local.php';
     require 'funciones/categorias.php';
     $categorias = listarCategorias();
     include 'layout/header.php';

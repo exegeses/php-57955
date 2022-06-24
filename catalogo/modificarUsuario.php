@@ -2,7 +2,7 @@
     require 'config/config.php';
     require 'funciones/autenticacion.php';
         autenticar();
-    require 'funciones/conexion.php';
+    require 'funciones/conexion-local.php';
     require 'funciones/usuarios.php';
     $check = modificarUsuario();
     $css = 'danger';
@@ -16,7 +16,7 @@
 ?>
 
     <main class="container py-4">
-        <h1>Modificación de un usurio</h1>
+        <h1>Modificación de un usuario</h1>
 
         <div class="alert alert-<?= $css ?> p-4 col-8 mx-auto shadow">
             <?= $mensaje ?>

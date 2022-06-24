@@ -4,7 +4,7 @@
     require 'funciones/autenticacion.php';
         autenticar();
         noAdmin();
-    require 'funciones/conexion.php';
+    require 'funciones/conexion-local.php';
     require 'funciones/usuarios.php';
     $usuarios = listarUsuarios();
 	include 'layout/header.php';
@@ -43,7 +43,7 @@
                     <td><?= $usuario['apellido'] ?></td>
                     <td><?= $usuario['rol'] ?></td>
                     <td>
-                        <a href="formModificarUsuario.php?idUsuario=<?= $usuario['idUsuario'] ?>" class="btn btn-outline-secondary">
+                        <a href="formModificarUsuarioAdmin.php?idUsuario=<?= $usuario['idUsuario'] ?>" class="btn btn-outline-secondary">
                             Modificar
                         </a>
                     </td>

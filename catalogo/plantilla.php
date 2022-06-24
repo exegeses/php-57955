@@ -1,8 +1,8 @@
 <?php
 
-    require 'config/config.php';
-    include 'layout/header.php';
-    include 'layout/nav.php';
+require 'config/config.php';
+include 'layout/header.php';
+include 'layout/nav.php';
 ?>
 
     <main class="container py-4">
@@ -14,5 +14,5 @@
     </main>
 
 <?php
-    include 'layout/footer.php';
+include 'layout/footer.php';
 ?>

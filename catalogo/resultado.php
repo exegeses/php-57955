@@ -1,7 +1,7 @@
 <?php
 
     //require 'config/config.php';
-    require 'funciones/conexion.php';
+    require 'funciones/conexion-local.php';
     require 'funciones/marcas.php';
     require 'funciones/categorias.php';
     require 'funciones/productos.php';

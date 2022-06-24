@@ -1,6 +1,6 @@
 <?php
     //require 'config/config.php';
-    require 'funciones/conexion.php';
+    require 'funciones/conexion-local.php';
     require 'funciones/productos.php';
     $check = modificarProducto( );
     $css = 'danger';

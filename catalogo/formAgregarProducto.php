@@ -2,7 +2,7 @@
     require 'config/config.php';
     require 'funciones/autenticacion.php';
         autenticar();
-    require 'funciones/conexion.php';
+    require 'funciones/conexion-local.php';
     require 'funciones/marcas.php';
     require 'funciones/categorias.php';
     $marcas = listarMarcas();
