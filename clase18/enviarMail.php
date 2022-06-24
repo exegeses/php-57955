@@ -1,6 +1,6 @@
 <?php
 
-    $destinatario = 'goku@dropjar.com';
+    $destinatario = 'goku@drop.com';
     $asunto = 'Probando email';
     $cuerpo = '<div style="width: 500px; font-family: arial;';
     $cuerpo .= 'background-color: #fbfb71; padding: 24px; font-size: 20px">';
