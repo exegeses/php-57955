@@ -70,7 +70,8 @@ function verUsuarioPorId()
                              '".$apellido."',
                              '".$email."',
                              '".$claveHash."',
-                             ".$idRol."
+                             ".$idRol.",
+                             ''
                         )";
         try {
             $resultado = mysqli_query( $link, $sql );
@@ -158,4 +159,129 @@ function modificarClave()
     }
     // la clave anterior no coincide
     header('location: formModificarUsuario.php?error=1');
+}
+
+function generarCodigo( $length = 24 )
+{
+    $chars = [
+                "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+                "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
+                1,2,3,4,5,6,7,8,9,0
+            ];
+    $codigo = '';
+    $lChars = count($chars)-1;
+    for( $n = 0; $n < $length; $n++ )
+    {
+        $codigo .= $chars[ rand( 0, $lChars) ];
+    }
+    return $codigo;
+}
+
+function mailCodigo( $email, $codigo )
+{
+    $asunto = 'Pedido de reseteo de contraseña';
+    $cuerpoMail = '<div>';
+    $cuerpoMail .= 'hacer click ';
+    $url = 'http://php-57955.curso:8080/catalogo/';
+    $url = 'https://php-57955.000webhostapp.com/';
+    $file = 'cambiarClave.php';
+    $cadena = '?codigo='.$codigo;
+    $cuerpoMail .= '<a href="'.$url.$file.$cadena.'">';
+    $cuerpoMail .= 'y cambiar contraaseña </a>"';
+    $cuerpoMail .= '<div>';
+    $headers ='From:  empresa@mail.com'."/r/n";
+    $headers .= 'MIME-Version: 1.0';
+    $headers .= 'Content-type: text/html; charset=utf-8';
+    mail($email, $asunto, $cuerpoMail, $headers);
+}
+
+function mailResetPass()
+{
+/*
+* generar código 24 caracteres aleatorio
+* guardar código en tabla usuarios
+* enviar un email
+  * con un link para cambiar la clave */
+    $codigo = generarCodigo();
+    $email = $_POST['email'];
+    $link = conectar();
+
+    $sql = "SELECT email 
+                FROM usuarios
+              WHERE email = '".$email."'";
+
+    try {
+        $resultado = mysqli_query($link, $sql);
+        $cantidad = mysqli_num_rows($resultado);
+        if( $cantidad == 0 ){
+            /* redirecci´on a formulario de reset */
+            header('location: formResetPass.php?error=1');
+            return false;
+        }
+        $sql = "UPDATE usuarios 
+                    SET recordarClave = '".$codigo."'
+                    WHERE email = '".$email."'";
+        try {
+            $resultado = mysqli_query($link, $sql);
+
+            /* envío de email */
+            mailCodigo( $email, $codigo );
+            return $resultado;
+
+        }catch( Exception $e ){
+            echo $e->getMessage();
+            return false;
+        }
+    }catch( Exception $e ){
+        echo $e->getMessage();
+        return false;
+    }
+}
+function validarCodigoCambioClave()
+{
+    $codigo = $_GET['codigo'];
+    $link = conectar();
+    $sql = "SELECT nombre, apellido, email
+                FROM usuarios
+                WHERE recordarClave = '". $codigo ."'";
+    try {
+        $resultado = mysqli_query($link, $sql);
+        $cantidad = mysqli_num_rows($resultado);
+
+        if( $cantidad == 0 ){
+            /* redirecci´on a formulario de reset */
+            header('location: formResetPass.php?error=1');
+            return false;
+        }
+        $usuario = mysqli_fetch_assoc($resultado);
+        return $usuario;
+
+    }catch( Exception $e ){
+        echo $e->getMessage();
+        return false;
+    }
+}
+
+function modificarRestaurarClave()
+{
+    $email = $_POST['email'];
+    $newClave = $_POST['newClave'];
+    $newClave2 = $_POST['newClave2'];
+    if( $newClave == $newClave2 ){
+        $link = conectar();
+        $newclaveHash = password_hash( $newClave, PASSWORD_DEFAULT );
+        $sql="UPDATE usuarios
+                SET clave = '". $newclaveHash."' 
+                WHERE email = '". $email."'";
+        try{
+            $resultado = mysqli_query($link, $sql);
+            return $resultado;
+        }
+        catch(Exception $e)
+        {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
 }

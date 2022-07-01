@@ -33,6 +33,9 @@
 ?>
             <div class="alert bg-light text-danger p-4 col-8 mx-auto shadow">
                 <?= $msjError ?>
+                <a href="formResetPass.php" class="btn btn-outline-secondary">
+                    resetear clave
+                </a>
             </div>
 <?php
         }
